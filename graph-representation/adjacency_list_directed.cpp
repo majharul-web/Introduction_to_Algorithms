@@ -11,8 +11,8 @@ int main()
     {
         int a, b;
         cin >> a >> b;
-        adj_list[b].push_back(a);
-        }
+        adj_list[a].push_back(b);
+    }
 
     for (int i = 0; i < n; i++)
     {
