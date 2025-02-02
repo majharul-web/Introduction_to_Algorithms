@@ -1,0 +1,25 @@
+
+# Ignore exam and assignment files
+exam/
+assignment/
+
+
+# Ignore binary files and compiled files
+*.exe
+*.out
+*.o
+
+# Ignore files without extensions
+# [!^.]*
+
+# Ignore folders for builds or outputs
+build/
+bin/
+output/
+
+# Ignore IDE-related files and folders
+.vscode/
+*.swp
+*.log
+
+
