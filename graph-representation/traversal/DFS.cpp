@@ -30,10 +30,10 @@ int main()
 
         adj_list[a].push_back(b);
         adj_list[b].push_back(a);
-
-        memset(vis, false, sizeof vis);
-        dfs(0);
     }
+
+    memset(vis, false, sizeof vis);
+    dfs(0);
 
     return 0;
 }
