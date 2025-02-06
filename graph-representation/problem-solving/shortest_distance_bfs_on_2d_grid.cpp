@@ -2,9 +2,9 @@
 using namespace std;
 
 int n, m;
-
 char grid[105][105];
 bool vis[105][105];
+int dest[105][105];
 vector<pair<int, int>> d = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
 bool isValid(int i, int j)
@@ -17,6 +17,7 @@ void bfs(int si, int sj)
     queue<pair<int, int>> q;
     q.push({si, sj});
     vis[si][sj] = true;
+    dest[si][sj] = 0; //
 
     while (!q.empty())
     {
@@ -25,8 +26,6 @@ void bfs(int si, int sj)
 
         int par_i = par.first;
         int par_j = par.second;
-
-        cout << par_i << " " << par_j << endl;
 
         for (int i = 0; i < 4; i++)
         {
@@ -37,6 +36,7 @@ void bfs(int si, int sj)
             {
                 q.push({ci, cj});
                 vis[ci][cj] = true;
+                dest[ci][cj] = dest[par_i][par_j] + 1;
             }
         }
     }
@@ -53,48 +53,29 @@ int main()
         }
     }
 
-    int si, sj;
-    cin >> si >> sj;
+    int si, sj, di, dj;
+    cin >> si >> sj >> di >> dj;
 
     memset(vis, false, sizeof(vis));
+    memset(dest, -1, sizeof(dest));
 
     bfs(si, sj);
+
+    cout << dest[di][dj] << endl;
 
     return 0;
 }
 
 /*
 input:
+
 3 4
 . . . .
 . . . .
 . . . .
 1 2
-
-output:
-1 2
-0 2
-2 2
-1 1
-1 3
-0 1
-0 3
-2 1
-2 3
-1 0
-0 0
 2 0
 
-*/
-
-/*
-
-complexity:
-
-O(V+E)  E is constant=4
-
-Final complexity: n * m (Row * Col)
-
-
+output:3
 
 */
