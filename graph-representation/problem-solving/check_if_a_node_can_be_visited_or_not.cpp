@@ -4,6 +4,8 @@ using namespace std;
 vector<int> adj_list[1005];
 bool vis[1005];
 
+// use bfs
+
 void bfs(int src)
 {
     queue<int> q;
