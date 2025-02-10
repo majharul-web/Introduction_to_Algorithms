@@ -3,33 +3,25 @@ using namespace std;
 
 vector<int> adj_list[105];
 bool vis[105];
-int parent[105];
+bool pathvis[105];
 
 bool cycle;
 
-void bfs(int src)
+void dfs(int src)
 {
-    queue<int> q;
-    q.push(src);
     vis[src] = true;
-
-    while (!q.empty())
+    pathvis[src] = true;
+    for (int child : adj_list[src])
     {
-        int par = q.front();
-        q.pop();
-
-        for (int child : adj_list[par])
+        if (vis[child] && pathvis[child])
         {
-            if (vis[child] && parent[par] != child)
-            {
-                cycle = true;
-            }
-            if (!vis[child])
-            {
-                q.push(child);
-                vis[child] = true;
-                parent[child] = par;
-            }
+            cycle = true;
+        }
+
+        if (!vis[child])
+        {
+
+            dfs(child);
         }
     }
 }
@@ -45,18 +37,17 @@ int main()
         int a, b;
         cin >> a >> b;
         adj_list[a].push_back(b);
-        adj_list[b].push_back(a);
     }
 
     memset(vis, false, sizeof(vis));
-    memset(parent, -1, sizeof(parent));
+    memset(pathvis, false, sizeof(pathvis));
     cycle = false;
 
     for (int i = 0; i < n; i++)
     {
         if (!vis[i])
         {
-            bfs(i);
+            dfs(i);
         }
     }
 
@@ -95,5 +86,7 @@ output: No cycle
 2 1
 1 0
 output: No cycle
+
+
 
 */
