@@ -84,5 +84,5 @@ output:
 3 -> 4
 4 -> 9
 
-complexity: O (VlogV+ElogE) = logV(V+E)
+complexity: O (VlogV+ElogE) = (V+E)logV = ElogV
 */
