@@ -84,5 +84,6 @@ output:
 3 -> 4
 4 -> 9
 
+complexity: O (V*E)
 
 */
