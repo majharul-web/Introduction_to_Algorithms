@@ -4,7 +4,7 @@ using namespace std;
 vector<int> adj_list[1005];
 bool vis[1005];
 
-// use bfs
+// use bfs function
 
 void bfs(int src)
 {
