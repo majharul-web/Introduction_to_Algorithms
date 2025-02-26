@@ -3,7 +3,7 @@ using namespace std;
 
 int par[1005];
 
-int find(int node) // complexity:O(N)
+int find(int node) // complexity:O(log N)
 {
     // cout << node << endl;
     if (par[node] == -1)
@@ -11,6 +11,7 @@ int find(int node) // complexity:O(N)
         return node;
     }
     int leader = find(par[node]);
+    par[node] = leader; // comment this line see complexity O(log N)
     return leader;
 }
 
@@ -26,6 +27,11 @@ int main()
     par[5] = 3;
 
     cout << find(4) << endl;
+
+    for (int i = 0; i < 6; i++)
+    {
+        cout << i << " -> " << par[i] << endl;
+    }
 
     return 0;
 }
