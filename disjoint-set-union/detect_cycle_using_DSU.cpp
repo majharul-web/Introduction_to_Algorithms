@@ -36,17 +36,64 @@ void set_union(int node1, int node2)
 int main()
 {
 
+    int n, e;
     memset(par, -1, sizeof(par));
     memset(group_size, 1, sizeof(group_size));
 
-    set_union(1, 2);
-    set_union(2, 0);
-    set_union(3, 1);
+    cin >> n >> e;
 
-    for (int i = 0; i < 6; i++)
+    bool cycle = false;
+    while (e--)
     {
-        cout << i << " -> " << par[i] << endl;
+        int a, b;
+        cin >> a >> b;
+
+        int leaderA = find(a);
+        int leaderB = find(b);
+        if (leaderA == leaderB)
+        {
+            cycle = true;
+        }
+        else
+        {
+            set_union(a, b);
+        }
+    }
+
+    if (cycle)
+    {
+        cout << "Cycle detected" << endl;
+    }
+    else
+    {
+        cout << "No cycle" << endl;
     }
 
     return 0;
 }
+
+/*
+input:
+
+5 5
+1 2
+1 3
+2 3
+3 4
+4 5
+
+output:
+Cycle detected
+
+input:
+4 3
+1 2
+2 3
+3 4
+
+
+output:
+No cycle
+
+
+*/

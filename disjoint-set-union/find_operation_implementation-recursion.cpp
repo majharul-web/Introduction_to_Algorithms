@@ -29,5 +29,3 @@ int main()
 
     return 0;
 }
-
-// complexity:O(N)
