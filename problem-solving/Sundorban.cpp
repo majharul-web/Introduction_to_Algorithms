@@ -3,9 +3,8 @@ using namespace std;
 
 int n, m;
 
-char grid[35][35];
-bool vis[35][35];
-bool level[35][35];
+char grid[105][105];
+bool vis[105][105];
 vector<pair<int, int>> d = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
 bool isValid(int i, int j)
@@ -27,8 +26,6 @@ void bfs(int si, int sj)
         int par_i = par.first;
         int par_j = par.second;
 
-        cout << par_i << " " << par_j << endl;
-
         for (int i = 0; i < 4; i++)
         {
             int ci = par_i + d[i].first;
@@ -45,7 +42,7 @@ void bfs(int si, int sj)
 
 int main()
 {
-    cin >> n;
+    cin >> n >> m;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
