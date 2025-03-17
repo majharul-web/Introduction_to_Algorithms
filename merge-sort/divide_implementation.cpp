@@ -39,6 +39,8 @@ int main()
 }
 
 /*
+complexity: O(log N)
+
 input
 5
 30 9 1 7 4
