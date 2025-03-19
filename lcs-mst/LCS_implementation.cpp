@@ -2,6 +2,7 @@
 using namespace std;
 
 string a, b;
+int dp[1005][1005];
 
 int lcs(int i, int j)
 {
@@ -9,21 +10,28 @@ int lcs(int i, int j)
     {
         return 0;
     }
+
+    if (dp[i][j] != -1)
+    {
+        return dp[i][j];
+    }
+
     if (a[i] == b[j])
     {
-        return 1 + lcs(i - 1, j - 1);
+        return dp[i][j] = 1 + lcs(i - 1, j - 1);
     }
     else
     {
         int op_1 = lcs(i - 1, j);
         int op_2 = lcs(i, j - 1);
 
-        return max(op_1, op_2);
+        return dp[i][j] = max(op_1, op_2);
     }
 }
 
 int main()
 {
+    memset(dp, -1, sizeof(dp));
     cin >> a >> b;
     int n = a.size();
     int m = b.size();
