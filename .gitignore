@@ -1,7 +1,7 @@
 
 # Ignore exam and assignment files
-exam/
-assignment/
+# exam/
+# assignment/
 
 
 # Ignore binary files and compiled files
